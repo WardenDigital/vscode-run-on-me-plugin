@@ -1,4 +1,10 @@
-import * as vscode from 'vscode'
+import * as vscode from 'vscode';
+import wrapper from '../views/settings/wrapper';
+import scripts from '../views/settings/scripts';
+import styles from '../views/settings/styles';
+import command from '../views/settings/command';
+import { Command } from '../types/command';
+import { Keys } from '../views/settings/keys';
 
 export default (context: vscode.ExtensionContext) => {
     const panel = vscode.window.createWebviewPanel(
@@ -8,89 +14,27 @@ export default (context: vscode.ExtensionContext) => {
         { enableScripts: true }
     );
 
-    const command = context.globalState.get<string>('command') ?? '';
+    const commands = []//context.globalState.get<Array<Command>>('commands') ?? [];
+    // Extra command as a new entry for UX purposes
+    commands.push({name: '', command: ''});
 
-    panel.webview.html = `
-    <html>
-      <head>
-      <style>
-        #wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding: 1rem;
-        }
-        label {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        
-        .input-group-wrapper {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 1rem;
-            border: 1px solid #fff;
-            border-radius: 1rem;
-        }
+    let template = wrapper;
+    let commandsHTML = ``;
 
-        .input-wrapper {
-            width: 100%;
-            display:flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+    commands.forEach((element, index) => {
+      const tmpl = command.replaceAll(Keys.INDEX, String(index)).replace(Keys.COMMAND, element.command).replace(Keys.NAME, element.name);
+      commandsHTML += tmpl;
+    });
 
-        textarea {
-            width: 80%;
-            padding: 0.8rem;
-            font-size: 1rem;
-            border: 1px solid #fff;
-            border-radius: 1rem;
-            color: #fff;
-            background: none;
-        }
 
-        #submit {
-            background: none;
-            border: 1px solid #fff;
-            border-radius: 1rem;
-            width: fit-content;
-            padding: 0.5rem 1rem;
-            color: white;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-      </style>
-      </head>
-      <body>
+    template = template.replace(Keys.CONTENT, commandsHTML);
+    template = template.replace(Keys.STYLES, styles).replace(Keys.SCRIPTS, scripts);
 
-        <div id="wrapper">
-            <h2>VSCode RunOnMe Settings</h2>
-            <div class="input-group-wrapper">
-                <div class="input-wrapper">
-                    <label id="command-label">Executable/Command (use <b>\${FILE}</b> as current file absolute path).</label>
-                    <textarea id="command">${command}</textarea>
-                </div>
-            </div>
-            <button id="submit" onclick="save()">Save</button>
-        </div>
-
-        <script>
-          const vscode = acquireVsCodeApi();
-          function save() {
-            vscode.postMessage({
-              command: document.getElementById('command').value,
-            });
-          }
-        </script>
-      </body>
-    </html>
-  `;
+    panel.webview.html = template;
 
     panel.webview.onDidReceiveMessage(msg => {
-        context.globalState.update('command', msg.command);
+        console.log(msg);
+        context.globalState.update('commands', msg.commands);
         vscode.window.showInformationMessage('RunOnMe settings saved');
     });
-}
+};

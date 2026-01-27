@@ -15,7 +15,7 @@ After executing the command, the output will be displayed in the "RunOnMe Output
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 Initial release of the "vscode-run-on-me" extension.
 

@@ -2,6 +2,11 @@
   "name": "vscode-run-on-me",
   "displayName": "vscode-run-on-me",
   "description": "This extension allows you to run custom binaries on current file.",
+  "publisher": "WardenDigital",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WardenDigital/vscode-run-on-me-plugin"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.106.2"

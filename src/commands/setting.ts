@@ -1,8 +1,6 @@
 import * as vscode from "vscode";
 import { Command } from "../types/command";
 import { Keys } from "../views/settings/keys";
-import "../views/settings/style.css";
-import "../views/settings/scripts.js";
 
 export default (context: vscode.ExtensionContext) => {
   const settings = Setting.getInstance(context);

@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/WardenDigital/vscode-run-on-me-plugin"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.106.2"
   },
@@ -16,6 +16,14 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "files": [
+    "dist/**",
+    "src/views/**",
+    "node_modules/@vscode/codicons/dist/**",
+    "package.json",
+    "README.md",
+    "LICENSE.md"
+  ],
   "contributes": {
     "commands": [
       {

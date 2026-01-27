@@ -1,19 +1,19 @@
 (function () {
 
-    const vscode = acquireVsCodeApi();
+    const vscode = window.acquireVsCodeApi();
 
-    document.getElementById("submit").addEventListener("click", save);
-    document.querySelectorAll("[data-action='delete']").forEach((button) => {
+    window.document.getElementById("submit").addEventListener("click", save);
+    window.document.querySelectorAll("[data-action='delete']").forEach((button) => {
         button.addEventListener("click", drop);
     });
-    document.getElementById("add-command").addEventListener("click", () => {
-        const index = document.querySelectorAll('[data-command-index]').length;
+    window.document.getElementById("add-command").addEventListener("click", () => {
+        const index = window.document.querySelectorAll('[data-command-index]').length;
         addCommandRow(index);
     });
 
     function drop(event) {
         const index = event.target.dataset.index;
-        const row = document.querySelector(`[data-command-index='${index}']`);
+        const row = window.document.querySelector(`[data-command-index='${index}']`);
         row.remove();
     }
 
@@ -31,7 +31,7 @@
         <textarea id="command-${index}">${command}</textarea>
     </div>`;
 
-        const container = document.getElementById("commands-container");
+        const container = window.document.getElementById("commands-container");
         container.insertAdjacentHTML("beforeend", rowTemplate);
 
         const deleteButton = container.querySelector(
@@ -44,14 +44,14 @@
     function save() {
         const commands = [];
 
-        let elements = document.querySelectorAll(
+        let elements = window.document.querySelectorAll(
             '[data-identificator="command-name"]',
         );
 
         for (let elem of elements) {
             const index = elem.dataset.index;
-            const name = document.getElementById("command-name-" + index).value;
-            const command = document.getElementById("command-" + index).value;
+            const name = window.document.getElementById("command-name-" + index).value;
+            const command = window.document.getElementById("command-" + index).value;
 
             const cmd = {
                 name,

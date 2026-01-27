@@ -39,7 +39,9 @@ export default (context: vscode.ExtensionContext) => {
         return;
       }
 
-      const cmdToRun = command.find((cmd) => cmd.name === selection);
+      const cmdToRun = command.find(
+        (cmd) => cmd.name.toLowerCase() === selection.toLowerCase(),
+      );
       if (!cmdToRun) {
         vscode.window.showErrorMessage(`Command not found: ${selection}`);
         return;

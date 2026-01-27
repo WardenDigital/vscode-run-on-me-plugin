@@ -1,5 +1,5 @@
 {
-  "name": "vscode-run-on-me",
+  "name": "RunOnMe",
   "displayName": "vscode-run-on-me",
   "description": "This extension allows you to run custom binaries on current file.",
   "publisher": "WardenDigital",

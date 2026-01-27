@@ -13,6 +13,10 @@ Alternatively, you can assign a keyboard shortcut through VSCode keyboard shortc
 
 After executing the command, the output will be displayed in the "RunOnMe Output" Infomation Message, allowing you to choose from the commands you have configured.
 
+## Example Configuration and Usage
+
+![configuration](./media/RunOnMe.gif)
+
 ## Release Notes
 
 ### 0.0.1

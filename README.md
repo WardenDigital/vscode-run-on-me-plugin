@@ -1,8 +1,6 @@
-# vscode-run-on-me README
+# Run On Me - VSCode Extension
 
-This is the README for your extension "vscode-run-on-me". After writing up a brief description, we recommend including the following sections.
-
-## Features
+## Brief Description
 The "vscode-run-on-me" extension allows you to run code snippets directly from your editor with ease. Simply select the code you want to execute and trigger the command to see the results instantly.
 
 ## Configuration

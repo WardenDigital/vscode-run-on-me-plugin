@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/WardenDigital/vscode-run-on-me-plugin"
   },
-  "version": "0.0.2",
+  "version": "0.0.2a",
   "engines": {
     "vscode": "^1.106.2"
   },

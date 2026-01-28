@@ -8,7 +8,7 @@ The "vscode-run-on-me" extension allows you to run code snippets directly from y
 To create commands to be executed search for "RunOnMe Settings" in the explorer (Ctrl+Shift+P).
 Set your command name and content. Use `${ME}` to represent current file path.
 
-In order to run command, open any file and use RunOnMe button in the top right corner of the editor.
+In order to run command, open any file and use RunOnMe button in the top right corner of the editor (or in Run dropdown menu if you have other run-related actions).
 Alternatively, you can assign a keyboard shortcut through VSCode keyboard shortcuts settings.
 
 After executing the command, the output will be displayed in the "RunOnMe Output" Infomation Message, allowing you to choose from the commands you have configured.
